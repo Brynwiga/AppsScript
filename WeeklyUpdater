@@ -1,0 +1,193 @@
+function onOpen() {
+  var ui = SpreadsheetApp.getUi();
+  ui.createMenu('Update')
+      .addItem('Update', 'automatic')
+      .addToUi();
+}
+function main() {
+  var date = new Date();
+  var h = date.getHours();
+  var day = date.getDay();
+  if (h == 9 && day == 2) {
+    automatic();
+  }
+}
+function numbers() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Data');
+  var target = SpreadsheetApp.openById('18NwfyUekgQ_mXxxk8S5_QDV3tkWd1mClrE1u9Z5cXok');
+  var date = Date().toString();
+  var regex = /^[A-Z][a-z]+/;
+  var regexTime = / [0-9]{2}:[0-9]{2}/;
+  var regexHour = / [0-9]{2}:/;
+  var regexMinute = /:[0-9]{2}/;
+  var regexNum = /[0-9]+/;
+  var hour = date.match(regexTime).toString().match(regexHour).toString().match(regexNum).toString();
+  var minute = date.match(regexTime).toString().match(regexMinute).toString().match(regexNum).toString();
+  var day = date.match(regex).toString();
+  if (day == 'Tue' && hour == 9 && minute >= 15 && minute <= 30) {
+  var start = 40;
+  var range = target.getRange('D' + start);
+  var isBlank = range.isBlank();
+  while (isBlank !== true) {
+    var start = start + 1;
+    var range = target.getRange('D' + start);
+    var isBlank = range.isBlank();
+  }
+  var week = start - 2;
+  target.getRange('A' + start).setValue(week);
+  var ssStart = 40;
+  var ssRange = ss.getRange('M' + ssStart);
+  var num = ssRange.getValue().toString();
+  while (num != week) {
+    var ssStart = ssStart + 1;
+    var ssRange = ss.getRange('M' + ssStart);
+    var num = ssRange.getValue().toString();
+  }
+  var copy1 = ss.getRange('E' + ssStart).getValue().toString();
+  target.getRange('D' + start).setValue(copy1);
+  var copy2 = ss.getRange('F' + ssStart).getValue().toString();
+  target.getRange('E' + start).setValue(copy2);
+  var copy3 = ss.getRange('G' + ssStart).getValue().toString();
+  target.getRange('F' + start).setValue(copy3);
+  var copy4 = ss.getRange('H' + ssStart).getValue().toString();
+  target.getRange('G' + start).setValue(copy4);
+  var copy5 = ss.getRange('I' + ssStart).getValue().toString();
+  target.getRange('I' + start).setValue(copy5);
+  var copy6 = ss.getRange('J' + ssStart).getValue().toString();
+  target.getRange('L' + start).setValue(copy6);
+  var copy7 = ss.getRange('K' + ssStart).getValue().toString();
+  target.getRange('M' + start).setValue(copy7);
+  var copy8 = ss.getRange('L' + ssStart).getValue().toString();
+  target.getRange('N' + start).setValue(copy8);
+  var copy9 = ss.getRange('A' + ssStart).getValue().toString();
+  target.getRange('B' + start).setValue(copy9);
+  target.getRange('C' + start).setFormula('=sum(D' + start + ':G' + start + ')');
+  target.getRange('H' + start).setFormula('=C' + start + '/7');
+  var color1 = target.getRange('C1').getBackground().toString();
+  target.getRange('C' + start).setBackground(color1);
+  var color2 = target.getRange('H1').getBackground().toString();
+  target.getRange('H' + start).setBackground(color2);
+  }
+}
+function manualNumbers() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Data');
+  var target = SpreadsheetApp.openById('18NwfyUekgQ_mXxxk8S5_QDV3tkWd1mClrE1u9Z5cXok');
+  var start = 40;
+  var range = target.getRange('D' + start);
+  var isBlank = range.isBlank();
+  while (isBlank !== true) {
+    var start = start + 1;
+    var range = target.getRange('D' + start);
+    var isBlank = range.isBlank();
+  }
+  var week = start - 2;
+  target.getRange('A' + start).setValue(week);
+  var ssStart = 40;
+  var ssRange = ss.getRange('M' + ssStart);
+  var num = ssRange.getValue().toString();
+  while (num != week) {
+    var ssStart = ssStart + 1;
+    var ssRange = ss.getRange('M' + ssStart);
+    var num = ssRange.getValue().toString();
+  }
+  var copy1 = ss.getRange('E' + ssStart).getValue().toString();
+  target.getRange('D' + start).setValue(copy1);
+  var copy2 = ss.getRange('F' + ssStart).getValue().toString();
+  target.getRange('E' + start).setValue(copy2);
+  var copy3 = ss.getRange('G' + ssStart).getValue().toString();
+  target.getRange('F' + start).setValue(copy3);
+  var copy4 = ss.getRange('H' + ssStart).getValue().toString();
+  target.getRange('G' + start).setValue(copy4);
+  var copy5 = ss.getRange('I' + ssStart).getValue().toString();
+  target.getRange('I' + start).setValue(copy5);
+  var copy6 = ss.getRange('J' + ssStart).getValue().toString();
+  target.getRange('L' + start).setValue(copy6);
+  var copy7 = ss.getRange('K' + ssStart).getValue().toString();
+  target.getRange('M' + start).setValue(copy7);
+  var copy8 = ss.getRange('L' + ssStart).getValue().toString();
+  target.getRange('N' + start).setValue(copy8);
+  var copy9 = ss.getRange('A' + ssStart).getValue().toString();
+  target.getRange('B' + start).setValue(copy9);
+  target.getRange('C' + start).setFormula('=sum(D' + start + ':G' + start + ')');
+  target.getRange('H' + start).setFormula('=C' + start + '/7');
+  var color1 = target.getRange('C1').getBackground().toString();
+  target.getRange('C' + start).setBackground(color1);
+  var color2 = target.getRange('H1').getBackground().toString();
+  target.getRange('H' + start).setBackground(color2);
+}
+function putNumber() {
+  var sheet = SpreadsheetApp.openById('18NwfyUekgQ_mXxxk8S5_QDV3tkWd1mClrE1u9Z5cXok').getSheetByName('2018');
+  var range = sheet.getRange('A1:A100').getValues();
+  for (i = 0; i < range.length; i++) {
+    if (range[i] != '') {
+      var row = i + 1;
+    }
+  }
+  if (row != null) {
+    var cell = sheet.getRange('A' + row);
+    var value = cell.getValue();
+    if (sheet.getRange('B' + row).getValue() != '') {
+      sheet.getRange('A' + (row + 1)).setValue(row - 1);
+    }
+  }
+}
+function automatic() {
+  putNumber();
+  var ss = SpreadsheetApp.openById('1r4Bnysb2oo5hjjqc0HFTpL3YTSLpy8hNdGG8nFMZ2xI').getSheetByName('Data');
+  var target = SpreadsheetApp.openById('18NwfyUekgQ_mXxxk8S5_QDV3tkWd1mClrE1u9Z5cXok').getSheetByName('2018');
+  var array = target.getRange('A1:A200').getValues();
+  var nArray = ss.getRange('M1:M200').getValues();
+  var status = false;
+  for (i=0;i<array.length;i=i+1) {
+    if (array[i] == '' && i != 0) {
+      var r = i;
+      var value = target.getRange('A' + r).getValue();
+      break;
+    }
+  }
+  for (i=0;i<nArray.length;i=i+1) {
+    if (nArray[i] == value) {
+      var row = i + 1;
+      var status = true;
+      break;
+    }
+  }
+    if (status == false) {
+    var value = value--;
+    for (i=0;i<nArray.length;i=i+1) {
+      if (nArray[i] == value) {
+        var row = i + 2;
+        var status = true;
+        break;
+      }
+    }
+  }
+  var d = ss.getRange('E' + row).getValue();
+  var e = ss.getRange('F' + row).getValue();
+  var f = ss.getRange('G' + row).getValue();
+  var g = ss.getRange('H' + row).getValue();
+  var iNum = ss.getRange('I' + row).getValue();
+  var l = ss.getRange('J' + row).getValue();
+  var m = ss.getRange('K' + row).getValue();
+  var n = ss.getRange('L' + row).getValue();
+  var backgroundBlue = target.getRange('C2').getBackground();
+  var backgroundPurple = target.getRange('H2').getBackground();
+  var range = ss.getRange('A' + row).getValue();
+  var check = target.getRange('A1:A100').getValues();
+  if (r > 3) {
+    target.getRange('A' + r).setValue((target.getRange('A' + (r - 1)).getValue() + 1));
+  }
+  target.getRange('B' + r).setValue(range);
+  target.getRange('C' + r).setBackground(backgroundBlue);
+  target.getRange('C' + r).setFormula('=SUM(D' + r + ':G' + r + ')');
+  target.getRange('D' + r).setValue(d);
+  target.getRange('E' + r).setValue(e);
+  target.getRange('F' + r).setValue(f);
+  target.getRange('G' + r).setValue(g);
+  target.getRange('H' + r).setBackground(backgroundPurple);
+  target.getRange('H' + r).setFormula('=C' + r + '/7');
+  target.getRange('I' + r).setValue(iNum);
+  target.getRange('L' + r).setValue(l);
+  target.getRange('M' + r).setValue(m);
+  target.getRange('N' + r).setValue(n);
+}  
