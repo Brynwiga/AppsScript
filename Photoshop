@@ -1,0 +1,24 @@
+function resizeImage() {
+  app.activeDocument.resizeImage("200%","200%");
+  alert("Your image was successfully resized");
+}
+function resizeImageWithInput(n) {
+  var percentage = n * 100;
+  app.activeDocument.resizeImage(percentage + "%",percentage + "%");
+  alert("Your image was successfully resized with the scale factor: " + n);
+}
+function setOpacity() {
+  app.activeDocument.activeLayer.opacity = 50;
+}
+function setOpacityWithInput(n) {
+  app.activeDocument.activeLayer.opacity = n;
+  alert("Opacity was set with the input value " + n);
+}
+function checkActiveLayerOpacity() {
+  var opacity = app.activeDocument.activeLayer.opacity;
+  if (opacity == 50) {
+    alert("Congratulations! The opacity is set to the right value.");
+  } else {
+    alert("Retry. The opacity on the active layer is not at the correct value.");
+  }
+}
