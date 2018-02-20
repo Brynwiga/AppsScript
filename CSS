@@ -1,0 +1,123 @@
+body {
+  background-color: white;
+}
+#header {
+  position: fixed;
+  height: 150px;
+  width: 110%;
+  margin-left: -10px;
+  margin-top: -10px;
+  background-color: white;
+}
+#header-top {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  float: left;
+  height: 75%;
+  width: 100%;
+  background-color: white;
+}
+#icon {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  float: left;
+  height: 100%;
+  width: 200px;
+  background-color: silver;
+}
+#name {
+  text-align: left;
+  margin-left: 250px;
+  padding-top: 30px;
+  font-family: arial;
+  font-weight: bold;
+  font-size: 50px;
+}
+#bar {
+  position: relative;
+  bottom: 0px;
+  height: 25%;
+  width: 110%;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  float: left;
+  background-color: green;
+  border-bottom: solid;
+  border-color: silver;
+}
+#account {
+  position: relative;
+  float: left;
+  height: 100%;
+  width: 200px;
+  background-color: green;
+  border-bottom: solid;
+  border-color: silver;
+  font-family: arial;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+#account > li {
+  list-style-type: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#account:hover {
+  color: gold;
+  border-color: gold;
+  background-color: white;
+}
+#body {
+  width: 100%;
+  height: 100%;
+}
+#account-info {
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  margin-left: -10px;
+  margin-top: 143px;
+  background-color: green;
+}
+#bulk {
+  width: 100%;
+  height: 100%;
+  margin-left: 200px;
+  margin-top: 170px;
+  position: relative;
+  float: right;
+  background-color: white;
+  z-index: -1;
+}
+p {
+  font-family: arial;
+  font-size: 15px;
+}
+ul > li {
+  list-style-type: none;
+  font-family: arial;
+  font-weight: bold;
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  text-align: left;
+  margin-left: -40px;
+}
+ul {
+  margin-top: -18px;
+}
+p {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+li:hover {
+  border-right: solid;
+  border-color: gold;
+  background-color: white;
+  color: green;
+}
