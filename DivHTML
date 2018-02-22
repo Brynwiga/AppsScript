@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  <div id="main">
+    <div id="left">
+      <ul>
+        <li>ONE</li>
+        <li>TWO</li>
+        <li>THREE</li>
+      </ul>
+    </div>
+    <div id="center">
+      <ul>
+        <li>ONE</li>
+        <li>TWO</li>
+        <li>THREE</li>
+      </ul>
+    </div>
+    <div id="right">
+      <ul>
+        <li>ONE</li>
+        <li>TWO</li>
+        <li>THREE</li>
+      </ul>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div id="button">
+    <button id="l" onClick="le()"><<</button>
+    <button id="r" onClick="ri()">>></button>
+  </div>
+    <div id="upDown">
+    <button id="l" onClick="up()">UP</button>
+    <button id="r" onClick="down()">DOWN</button>
+  </div>
+  <script>
+    var width = 600;
+    var height = 200;
+    function le() {
+      width -= 10;
+      document.getElementById("main").style.width = width + "px";
+      var left = (width / 2) - 225;
+      document.getElementById("center").style.marginLeft = left + "px";
+    }
+    function ri() {
+      width += 10;
+      document.getElementById("main").style.width = width + "px";
+      var left = (width / 2) - 225;
+      document.getElementById("center").style.marginLeft = left + "px";
+    }
+    function down() {
+      height -= 10;
+      document.getElementById("main").style.height = height + "px";
+      var top = (height / 2) - 50;
+      document.getElementById("left").style.marginTop = top + "px";
+      document.getElementById("right").style.marginTop = top + "px";
+      document.getElementById("center").style.marginTop = top + "px";
+    }
+    function up() {
+      height += 10;
+      document.getElementById("main").style.height = height + "px";
+      var top = (height / 2) - 50;
+      document.getElementById("left").style.marginTop = top + "px";
+      document.getElementById("right").style.marginTop = top + "px";
+      document.getElementById("center").style.marginTop = top + "px";
+    }
+  </script>
+</body>
+</html>
