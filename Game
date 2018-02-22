@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+    #myCanvas {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+    }
+    button {
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <p id="score">Score: 0</p>
+    <canvas id="myCanvas" width="500" height="500" style="background-color: gold"></canvas>
+  </div>
+  <button onClick="start()">GO</button>
+  <p id="printLeft" style="font-size: 10px"></p>
+  <p id="printRight" style="font-size: 10px"></p>
+  <p id="top" style="font-size: 10px"></p>
+  <p id="bottom" style="font-size: 10px"></p>
+  <script>
+    var c = document.getElementById("myCanvas").getContext("2d");
+    c.beginPath();
+    c.arc(200,400,10,0,2*Math.PI,false);
+    c.stroke();
+    c.fillStyle = "green";
+    c.fill();
+    c.closePath();
+    var x = 200;
+    var y = 400;
+    var j = 0;
+    var bounceX = false;
+    var bounceY = false;
+    var randomX = 1;
+    var randomY = 1;
+    var randomXT = 1;
+    var randomYT = 1;
+    var px = 20;
+    var py = 20;
+    var left = false;
+    var right = false;
+    var up = false;
+    var bottom = false;
+    var score = 0;
+    var lastScore = 0;
+    var count = 0;
+    document.addEventListener("keydown",keyDownHandler,false);
+    document.addEventListener("keyup",keyUpHandler,false);
+    function keyDownHandler(e) {
+      if (e.keyCode == 37) {
+        left = true;
+      }
+      if (e.keyCode == 39) {
+        right = true;
+      }
+      if (e.keyCode == 38) {
+        up = true;
+      }
+      if (e.keyCode == 40) {
+        bottom = true;
+      }
+      document.getElementById("printLeft").innerHTML = left;
+      document.getElementById("printRight").innerHTML = right;
+      document.getElementById("top").innerHTML = up;
+      document.getElementById("bottom").innerHTML = bottom;
+    }
+    function keyUpHandler(e) {
+      if (e.keyCode == 37) {
+        left = false;
+      }
+      if (e.keyCode == 39) {
+        right = false;
+      } 
+      if (e.keyCode == 38) {
+        up = false;
+      }
+      if (e.keyCode == 40) {
+        bottom = false;
+      }
+      document.getElementById("printLeft").innerHTML = left;
+      document.getElementById("printRight").innerHTML = right;
+      document.getElementById("top").innerHTML = up;
+      document.getElementById("bottom").innerHTML = bottom;
+    }
+    document.getElementById("printLeft").innerHTML = left;
+    document.getElementById("printRight").innerHTML = right;
+    document.getElementById("top").innerHTML = up;
+    document.getElementById("bottom").innerHTML = bottom;
+    function draw() {
+      if (x > 495 || x < 5) {
+        randomX = Math.random() * 2;
+      }
+      if (y > 495 || y < 5) {
+        randomY = Math.random() * 2;
+      }
+      if (x > 495 || x < 5) {
+        bounceX = !bounceX;
+      }
+      if (y > 495 || y < 5) {
+        bounceY = !bounceY;
+      }
+      if (x > 500 || x < 0) {
+        randomXT = randomX + 5;
+      } else {
+        randomXT = randomX;
+      }
+      if (y > 500 || y < 0) {
+        randomYT = randomY + 5;
+      } else {
+        randomYT = randomY;
+      }
+      if (bounceX) {
+        x -= randomXT;
+      } else {
+        x += randomXT; 
+      }
+      if (bounceY) {
+        y -= randomYT;
+      } else {
+        y += randomYT;
+      }
+      c.beginPath();
+      c.arc(x,y,10,0,2*Math.PI,false);
+      c.stroke();
+      c.fillStyle = "green";
+      c.fill();
+      c.closePath();
+    }
+    function piece() {
+      if (left) {
+        px -= 1;
+      }
+      if (right) {
+        px += 1;
+      }
+      if (up) {
+        py -= 1;
+      }
+      if (bottom) {
+        py += 1;
+      }
+      c.beginPath()
+      c.rect(px,py,20,20);
+      c.stroke();
+      c.fillStyle = "orange";
+      c.fill();
+      c.closePath();
+    }
+    function check() {
+      var s = false;
+      if (x > px && x < (px + 20) && y > py && y < (py + 20)) {
+        s = true;
+        lastScore = j;
+      }
+      if (x > px && x < (px + 20) && y > py && y < (py + 30)) {
+        bounceX = !bounceX;
+        s = true;
+        lastScore = j;
+      }
+      if (x > px && x < (px + 30) && y > py && y < (py + 30)) {
+        bounceY = !bounceY;
+        s = true;
+        lastScore = j;
+      }
+      if (score > 10000) {
+        clearInterval();
+        document.getElementById("score").innerHTML = "Score: >10000! YOU WIN!";
+      }
+      if ((j - lastScore) < 10) {
+        count++;
+      }
+      if (count > 100) {
+        s = false;
+        x += 5;
+        y +=5;
+        count = 0;
+      }
+      if (s) {
+        score += Math.floor(randomXT + randomYT);
+        document.getElementById("score").innerHTML = "Score: " + score;
+      }
+    }
+    piece();
+    function start() {
+      var interval = setInterval(move,1);
+      function move() {
+        c.clearRect(0,0,500,500);
+        draw();
+        piece();
+        check();
+        j++;
+      }
+    }
+  </script>
+</body>
+</html>
