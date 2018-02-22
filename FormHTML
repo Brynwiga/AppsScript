@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  <script>
+    var total = 0;
+    var array = [];
+    var number = document.createElement("input");
+    var add = document.createElement("button");
+    add.addEventListener("click",formElement);
+    formatButton(add,"Add")
+    document.body.appendChild(add);
+    document.body.appendChild(number);
+    number.style.marginTop = "20px";
+    number.style.display = "block";
+    number.style.marginLeft = "auto";
+    number.style.marginRight = "auto";
+    document.getElementsByTagName("body")[0].style.backgroundColor = "white";
+    formElement(1);
+    function styleDiv(div) {
+      div.style.height = "270px";
+      div.style.width = "75%";
+      div.style.backgroundColor = "#cccccc";
+      var id = "div" + total;
+      div.setAttribute("id",id);
+      div.style.marginTop = "50px";
+      div.style.marginLeft = "auto";
+      div.style.marginRight = "auto";
+    }
+    function formatLi(li,name) {
+      li.style.listStyleType = "none";
+      li.innerHTML = name;
+      var input = document.createElement("input");
+      li.appendChild(input);
+      formatInput(input);
+      li.style.textAlign = "left";
+      li.style.paddingTop = "20px";
+      li.style.paddingLeft = "20px";
+      li.setAttribute("id",name);
+    }
+    function formatInput(input) {
+      input.style.width = "50%";
+    }
+    function formatButton(submit,name) {
+      submit.style.width = "100px";
+      submit.style.height = "20px";
+      submit.innerHTML = name;
+      submit.style.marginTop = "20px";
+      submit.style.display = "block";
+      submit.style.marginLeft = "auto";
+      submit.style.marginRight = "auto";
+    }
+    function update() {
+      total++;
+      var id = "div" + total;
+      array.push(id);
+    }
+    function formElement(num) {
+      if (isNaN(num) && isNaN(number.value)) {
+        num = 1;
+      } else if (isNaN(num)) {
+        num = number.value;
+      }
+      for (i=0;i<num;i++) {
+        var div = document.createElement("div");
+        document.body.appendChild(div);
+        update();
+        styleDiv(div);
+        var form = document.createElement("form");
+        div.appendChild(form);
+        var ul = document.createElement("ul");
+        form.appendChild(ul);
+        var question = document.createElement("li");
+        formatLi(question,"Question: ");
+        form.appendChild(question);
+        var answer = document.createElement("li");
+        formatLi(answer,"Answer: ");
+        form.appendChild(answer);
+        var inAnswer1 = document.createElement("li");
+        formatLi(inAnswer1,"Incorrect Answer 1: \t");
+        form.appendChild(inAnswer1)
+        var inAnswer2 = document.createElement("li");
+        formatLi(inAnswer2,"Incorrect Answer 2: \t");
+        form.appendChild(inAnswer2)
+        var inAnswer3 = document.createElement("li");
+        formatLi(inAnswer3,"Incorrect Answer 3: \t");
+        form.appendChild(inAnswer3)
+        var submit = document.createElement("button");
+        formatButton(submit,"Submit");
+        form.appendChild(submit);
+      }
+      if (total > 1) { 
+        for (i=0;i<array.length;i++) {
+          document.getElementById(array[i]).style.backgroundColor = "green";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
