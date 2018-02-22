@@ -1,0 +1,91 @@
+body {
+  background: #dddddd;
+}
+#main {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
+  width: 600px;
+  margin-top: 100px;
+  background-color: green;
+}
+#left {
+  height: 100px;
+  width: 100px;
+  background-color: gold;
+  display: block;
+  float: left;
+  margin-left: 75px;
+  margin-top: 50px;
+}
+#right {
+  height: 100px;
+  width: 100px;
+  background-color: gold;
+  display: block;
+  float: right;
+  margin-right: 75px;
+  margin-top: 50px;
+}
+#center {
+  height: 100px;
+  width: 100px;
+  background-color: gold;
+  display: block;
+  float: left;
+  margin-left: 75px;
+  margin-top: 50px;
+}
+#main > div:hover {
+  background-color: white;
+}
+#main:hover {
+  background-color: white;
+}
+li {
+  list-style-type: none;
+  font-family: arial;
+  font-size: 12px;
+  padding: 4px;
+  font-weight: bold;
+  text-align: center;
+  margin-right: 80px;
+  margin-left: -20px;
+}
+button {
+  border: none;
+  background-color: #999;
+  height: 40px;
+  width: 50px;
+  text-align: center;  
+}
+#button {
+  display: block;
+  height: 100px;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#l {
+  float: left;
+}
+#r {
+  float: right;
+}
+#upDown {
+  display: block;
+  height: 50px;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+button:hover {
+  background-color: #444444;
+  color: white;
+}
+ul {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
