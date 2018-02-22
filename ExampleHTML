@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  <div id="bar">
+    <div id="login">LOG IN</div>
+    <div id="signout">SIGN UP</div>
+    <div id="explore" onClick="openSide()" onClick="exp()">EXPLORE</div>
+  </div>
+  <div id="side">
+    <div>
+      <ul>
+        <li>HOME</li>
+        <li>ABOUT US</li>
+        <li>MATERIALS</li>
+        <li>CHAT</li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 onClick="header(0)">Lorem Ipsum</h1>
+    <br>
+    <p onClick="golden(0)">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam, lorem non lobortis bibendum, sem leo vulputate diam, vitae ultrices odio odio eget nisl. Etiam vitae sem diam. Mauris eu porta libero. Etiam venenatis commodo quam. Phasellus cursus nibh id laoreet bibendum. Ut sollicitudin orci et augue laoreet efficitur. Etiam felis nisi, vestibulum ut aliquet quis, varius ac neque. Nulla facilisi. Nullam facilisis quam non nisi blandit finibus. Suspendisse lacinia ipsum vitae odio tincidunt consectetur. Vivamus ut quam eu justo molestie rhoncus ut suscipit leo. Phasellus pellentesque nulla in erat imperdiet, maximus tempus arcu scelerisque. Fusce venenatis ultrices ipsum sed varius.</p>
+    <br>
+    <p onClick="golden(1)">Sed sit amet tellus et tellus convallis dignissim non bibendum quam. Cras sit amet nisi laoreet, bibendum sem eget, hendrerit augue. Sed nisl metus, condimentum quis facilisis vel, euismod eu elit. Aenean vitae ullamcorper massa. Curabitur lectus tellus, feugiat quis ligula ut, semper condimentum magna. Nunc quam tortor, pellentesque vitae enim ut, ultrices malesuada nisl. In sit amet purus velit. Nunc luctus mi at est elementum tristique. Integer maximus, libero sagittis aliquam cursus, lorem augue pulvinar dolor, id rhoncus diam justo et risus. Curabitur vel efficitur nunc. Mauris cursus, massa a vulputate congue, libero quam rutrum ex, nec porttitor dui odio sit amet erat. Cras finibus ante massa, et tempor dolor bibendum id. Nulla facilisi. Etiam interdum dolor imperdiet, faucibus risus quis, aliquam ante.</p>
+    <br>
+    <p onClick="golden(2)">Integer eget est quis nibh porta lacinia. Vivamus venenatis odio et ex pharetra, ut lacinia enim commodo. Fusce elementum, elit in vulputate laoreet, est arcu varius erat, vitae varius velit massa ut magna. Mauris sodales bibendum ultrices. Aenean tortor nisl, eleifend sed pellentesque quis, rhoncus sit amet diam. Aenean commodo tortor ut consectetur viverra. Morbi finibus erat ut pulvinar sagittis. Nam fringilla felis at volutpat auctor. In fermentum ex finibus lacus porttitor volutpat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin consectetur mollis quam, viverra mollis enim fringilla et. Cras a tellus at risus varius venenatis et id sapien. Praesent consectetur ut sapien et suscipit. Vestibulum suscipit commodo iaculis.</p>
+    <br>
+    <p onClick="golden(3)">Vivamus ac elementum erat. Suspendisse in malesuada mauris, quis ornare erat. Maecenas vitae ex a nunc placerat pharetra eget et lorem. Sed ullamcorper finibus enim eu tristique. Quisque ullamcorper nunc in augue luctus, at feugiat erat cursus. Sed luctus tellus eget venenatis semper. Maecenas luctus tortor vel dolor facilisis, at fermentum erat pharetra. Vestibulum semper turpis id elementum mattis.</p>
+  </div>
+  <script>
+    var show = [false];
+    var g = [0,0,0,0];
+    var h = [0];
+    var e = 0;
+    set();
+    function openSide() {
+      show[0] = !show[0];
+      set();
+    }
+    function set() {
+      if (show[0]) {
+        document.getElementById("side").style.display = "block";
+        for (i=0;i<document.getElementsByTagName("h1").length;i++) {
+          document.getElementsByTagName("h1")[i].style.marginLeft = "220px";
+        }
+        for (i=0;i<document.getElementsByTagName("p").length;i++) {
+        document.getElementsByTagName("p")[i].style.marginLeft = "220px";
+        }
+      } else {
+        document.getElementById("side").style.display = "none";
+        for (i=0;i<document.getElementsByTagName("h1").length;i++) {
+          document.getElementsByTagName("h1")[i].style.marginLeft = "50px";
+        }
+        for (i=0;i<document.getElementsByTagName("p").length;i++) {
+          document.getElementsByTagName("p")[i].style.marginLeft = "50px";
+        }
+      }
+      exp();
+    }
+    function golden(num) {
+      if (g[num] == 0) {
+        g[num] = 1;
+        document.getElementsByTagName("p")[num].style.color = "gold";
+      } else {
+        g[num] = 0;
+        document.getElementsByTagName("p")[num].style.color = "black";
+      }
+    }
+    function header(num) {
+      if (h[num] == 0) {
+        h[num] = 1;
+        document.getElementsByTagName("h1")[num].style.color = "gold";
+      } else {
+        h[num] = 0;
+        document.getElementsByTagName("h1")[num].style.color = "black";
+      }
+    }
+    exp();
+    function exp() {
+      e = !e;
+      if (e) {
+        document.getElementById("explore").style.backgroundColor = "green";
+        document.getElementById("explore").style.color = "white";
+      } else {
+        document.getElementById("explore").style.backgroundColor = "#ddd";
+        document.getElementById("explore").style.color = "black";
+      }
+    }
+  </script>
+</body>
+</html>
