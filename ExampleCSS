@@ -1,0 +1,78 @@
+body {
+  background-color: white;
+}
+#bar {
+  width: 100%;
+  height: 40px;
+  background-color: #ddd;
+  border-bottom: solid;
+  position: fixed;
+  margin-top: -10px;
+  margin-left: -10px
+}
+#login {
+  position: relative;
+  float: right;
+  background-color: #ddd;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  font-family: arial;
+  padding-top: 10px;
+}
+#signout {
+  position: relative;
+  float: right;
+  background-color: #ddd;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  font-family: arial;
+  padding-top: 10px;
+}
+#bar > div:hover {
+  background-color: green;
+  color: white;
+}
+#explore {
+  position: relative;
+  float: left;
+  background-color: #ddd;
+  height: 30px;
+  width: 200px;
+  text-align: center;
+  font-family: arial;
+  padding-top: 10px;
+}
+#side {
+  height: 100%;
+  width: 200px;
+  background-color: #ddd;
+  border-right: solid;
+  position: fixed;
+  margin-top: 30px;
+  margin-left: -10px;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style-type: none;
+  font-family: arial;
+  padding: 20px;
+  text-align: center;
+}
+li:hover {
+  background-color: green;
+  color: white;
+  margin-left: none;
+}
+h1 {
+  margin-left: 50px;
+  margin-top: -10px;
+}
+p {
+  margin-left: 50px;
+  margin-right: 50px;
+}
